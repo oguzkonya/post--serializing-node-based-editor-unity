@@ -358,5 +358,12 @@ public class NodeBasedEditor : EditorWindow
                 )
             );
         }
+
+        foreach (var connectionDeserialized in connectionsDeserialized)
+        {
+            var inPoint = nodes.First(n => n.inPoint.id == connectionDeserialized.inPoint.id).inPoint;
+            var outPoint = nodes.First(n => n.outPoint.id == connectionDeserialized.outPoint.id).outPoint;
+            connections.Add(new Connection(inPoint, outPoint, OnClickRemoveConnection));
+        }
     }
 }
